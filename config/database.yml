@@ -1,7 +1,7 @@
 default: &default
   adapter: postgresql
   encoding: UTF8
-  pool: 1
+  pool: 10
   username: doadmin
   password: <%= ENV['DB_PASSWORD'] %>
   host: db-postgresql-chronos2-do-user-6983944-0.b.db.ondigitalocean.com
