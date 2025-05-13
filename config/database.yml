@@ -1,0 +1,37 @@
+default: &default
+  adapter: postgresql
+  encoding: UTF8
+  pool: 1
+  username: doadmin
+  password: <%= ENV['DB_PASSWORD'] %>
+  host: db-postgresql-chronos2-do-user-6983944-0.b.db.ondigitalocean.com
+  port: 25060
+  dbname: crescer
+  sslmode: prefer
+
+development:
+  <<: *default
+  database: crescer
+
+test:
+  <<: *default
+  database: api_produtos_test
+
+production:
+  primary: &primary_production
+    <<: *default
+    database: api_produtos_production
+    username: doadmin
+    password: <%= ENV['DB_PASSWORD'] %>
+  cache:
+    <<: *primary_production
+    database: api_produtos_production_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: api_produtos_production_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_production
+    database: api_produtos_production_cable
+    migrations_paths: db/cable_migrate

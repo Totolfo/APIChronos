@@ -1,0 +1,11 @@
+.git
+.gitignore
+/node_modules
+/log/*
+/tmp/*
+!/tmp/.keep
+/config/master.key
+/config/credentials/*.key
+/public/assets
+/app/assets/builds/*
+!/app/assets/builds/.keep
