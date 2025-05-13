@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
-  resources :produtos, only: [:index]
+  resources :produtos, only: [:index], defaults: { format: :json }
 end
